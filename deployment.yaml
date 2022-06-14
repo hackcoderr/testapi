@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-flask-app
+  template:
+    metadata:
+      labels:
+        app: simple-flask-app
+    spec:
+      containers:
+        - name: simple-flask-app
+          image: hackcoderr/flask
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: 500m
+              memory: 256Mi  
+            limits:
+              cpu: 1000m
+              memory: 512Mi  
+
